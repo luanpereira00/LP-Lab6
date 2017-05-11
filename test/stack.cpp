@@ -7,6 +7,9 @@ using std::endl;
 #include <string>
 using std::string;
 
+#include <sstream>
+using std::stringstream;
+
 #include <locale>
 using std::locale;
 using std::toupper;
@@ -16,7 +19,8 @@ using std::isalpha;
 
 int main (){
 	char *v = new char[0];
-	string line, palindromo, aux;
+	string line, palindromo, aux/*, letter*/;
+	/*stringstream ss;*/
 	locale loc;
 
 	pilha<char> s(v, 0);
@@ -25,10 +29,16 @@ int main (){
 	getline(cin, line);
 	for(uint i=0; i<line.length(); i++){ 
 		if(isalpha(line[i], loc)) {
-			line[i]=toupper(line[i], loc);
-			s.push(toupper(line[i], loc));
+			line[i]=tolower(line[i], loc);
+			s.push(tolower(line[i], loc));
 			aux+=line[i];
 		}
+		/*else {
+			ss << line[i];
+			ss >> letter;
+			ReplaceAccents(letter);
+			cout << letter << endl;
+		}	*/
 	}
 
 	line=aux;
@@ -37,10 +47,16 @@ int main (){
 		palindromo += s.show(j);
 	}
 	
-	if(line==palindromo) cout << "Eh palindromo! "<<endl;
-	else cout << "Nao eh palindromo!"<<endl;
+	if(line==palindromo){
+		cout << palindromo << " == " << line << endl;
+		cout << "Eh palindromo! "<<endl;
+	}
+	else {
+		cout << palindromo << " != " << line << endl;
+		cout << "Nao eh palindromo!"<<endl;
+	}
 
-	cout << palindromo << " == " << line << endl;
+	
 
 	//delete[] s.getVetor();
 	return 0;
