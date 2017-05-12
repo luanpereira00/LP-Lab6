@@ -64,7 +64,7 @@ public:
 	}
 };
 
-string removeAccents (string input) {
+string removeAccents(string input) {
 	string charsA = "áàâãÁÀÂÃ"; 
     string charsE = "éèêÉÈÊ";
     string charsI = "íìîïÍÌÎÏ";
@@ -73,55 +73,54 @@ string removeAccents (string input) {
     string charsC = "çÇ";
     string charsN = "ñÑ";
  
-    for (uint i = 0; i < input.size(); i++) {
-        for (uint j = 0; j < charsA.size(); j++) {
-            if ((input[i] == charsA[j]) && (input[i+1] == charsA[j+1])) {
-                return "a";
-            }
+    
+    for (uint j = 0; j < charsA.size(); j++) {
+        if ((input[0] == charsA[j]) && (input[1] == charsA[j+1])) {
+            return "a";
         }
     }
-    for (uint i = 0; i < input.size(); i++) {
-        for (uint j = 0; j < charsE.size(); j++) {
-            if ((input[i] == charsE[j]) && (input[i+1] == charsE[j+1])) {
-                return "e";
-            }
+
+    for (uint j = 0; j < charsE.size(); j++) {
+        if ((input[0] == charsE[j]) && (input[1] == charsE[j+1])) {
+            return "e";
         }
     }
-    for (uint i = 0; i < input.size(); i++) {
-        for (uint j = 0; j < charsI.size(); j++) {
-            if ((input[i] == charsI[j]) && (input[i+1] == charsI[j+1])) {
-                return "i";
-            }
+
+
+    for (uint j = 0; j < charsI.size(); j++) {
+        if ((input[0] == charsI[j]) && (input[1] == charsI[j+1])) {
+            return "i";
         }
     }
-    for (uint i = 0; i < input.size(); i++) {
-        for (uint j = 0; j < charsO.size(); j++) {
-            if ((input[i] == charsO[j]) && (input[i+1] == charsO[j+1])) {
-                return "o";
-            }
+
+
+    for (uint j = 0; j < charsO.size(); j++) {
+        if ((input[0] == charsO[j]) && (input[1] == charsO[j+1])) {
+            return "o";
         }
     }
-    for (uint i = 0; i < input.size(); i++) {
-        for (uint j = 0; j < charsU.size(); j++) {
-            if ((input[i] == charsU[j]) && (input[i+1] == charsU[j+1])) {
-                return "u";
-            }
+
+
+    for (uint j = 0; j < charsU.size(); j++) {
+        if ((input[0] == charsU[j]) && (input[1] == charsU[j+1])) {
+            return "u";
         }
     }
-    for (uint i = 0; i < input.size(); i++) {
-        for (uint j = 0; j < charsC.size(); j++) {
-            if ((input[i] == charsC[j]) && (input[i+1] == charsC[j+1])) {
-                return "c";
-            }
+
+
+    for (uint j = 0; j < charsC.size(); j++) {
+        if ((input[0] == charsC[j]) && (input[1] == charsC[j+1])) {
+            return "c";
         }
     }
-    for (uint i = 0; i < input.size(); i++) {
-        for (uint j = 0; j < charsN.size(); j++) {
-            if ((input[i] == charsN[j]) && (input[i+1] == charsN[j+1])) {
-                return "n";
-            }
+
+
+    for (uint j = 0; j < charsN.size(); j++) {
+        if ((input[0] == charsN[j]) && (input[1] == charsN[j+1])) {
+            return "n";
         }
     }
+
 	return input;
 }
 #endif

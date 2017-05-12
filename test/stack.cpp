@@ -30,44 +30,41 @@ int main (){
 	getline(cin, line);
 	
 	for(uint i=0; i<line.length(); i++){ 
-		//cout << line[i] << endl;
-		if(isalpha(line[i], loc)) {
-			//cout << line[i] << endl;
+		if(isalnum(line[i], loc)) {
 			line[i]=tolower(line[i], loc);
 			s.push(line[i]);
 			aux+=line[i];
 		}	
 		else if(ispunct(line[i], loc)) {
 			//faz nada
-			//cout << line[i] << endl;
 		}	
 		else if(isspace(line[i], loc)) {
 			// faz nada
-			//cout << line[i] << endl;
 		}
 		else{ //is accented letter
 			ss << line[i] << line[i+1];
 			ss >> letter;
-			//cout << letter << endl;
+			cout << "letterB: " << letter << endl;
 			letter=removeAccents(letter);
+			cout << "letterA: " << letter << endl;
 			s.push(letter[0]);
-			//cout << letter << endl;
 			aux+=letter;
 			i++;
+			letter="";
 		}
 	}
-	line = aux.substr(0, aux.size()/2);
+	line = aux/*.substr(0, aux.size()/2)*/;
 
-	for(int i=0; i<s.getTam()/2; i++){ 
+	for(int i=0; i<s.getTam()/*/2*/; i++){ 
 		palindromo += s.show(i);
 	}
 	
 	if(line==palindromo){
-		cout << palindromo << " == " << line << endl;
+		cout << line << " == " << palindromo << endl;
 		cout << "Eh palindromo! "<<endl;
 	}
 	else {
-		cout << palindromo << " != " << line << endl;
+		cout << line  << " != " << palindromo << endl;
 		cout << "Nao eh palindromo!"<<endl;
 	}
 
