@@ -14,37 +14,52 @@ using std::stringstream;
 using std::locale;
 using std::toupper;
 using std::isalpha;
+using std::ispunct;
 
 #include "stack.h"
 
 int main (){
 	char *v = new char[0];
-	string line, palindromo, aux/*, letter*/;
-	/*stringstream ss;*/
+	string line, palindromo, aux, letter;
+	stringstream ss;
 	locale loc;
 
 	pilha<char> s(v, 0);
 	
 	cout << "Digite a entrada: ";
 	getline(cin, line);
+	
 	for(uint i=0; i<line.length(); i++){ 
+		//cout << line[i] << endl;
 		if(isalpha(line[i], loc)) {
+			//cout << line[i] << endl;
 			line[i]=tolower(line[i], loc);
-			s.push(tolower(line[i], loc));
+			s.push(line[i]);
 			aux+=line[i];
+		}	
+		else if(ispunct(line[i], loc)) {
+			//faz nada
+			//cout << line[i] << endl;
+		}	
+		else if(isspace(line[i], loc)) {
+			// faz nada
+			//cout << line[i] << endl;
 		}
-		/*else {
-			ss << line[i];
+		else{ //is accented letter
+			ss << line[i] << line[i+1];
 			ss >> letter;
-			ReplaceAccents(letter);
-			cout << letter << endl;
-		}	*/
+			//cout << letter << endl;
+			letter=removeAccents(letter);
+			s.push(letter[0]);
+			//cout << letter << endl;
+			aux+=letter;
+			i++;
+		}
 	}
+	line = aux.substr(0, aux.size()/2);
 
-	line=aux;
-
-	for(int j=0; j<s.getTam(); j++){ 
-		palindromo += s.show(j);
+	for(int i=0; i<s.getTam()/2; i++){ 
+		palindromo += s.show(i);
 	}
 	
 	if(line==palindromo){
