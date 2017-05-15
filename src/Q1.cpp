@@ -1,3 +1,11 @@
+/**
+ * @file	Q1.cpp
+ * @brief	Funcao principal
+ * @author	Luan Pereira (luanpereira00@outlook.com)
+ * @since	15/05/2019
+ * @date	15/05/2017
+ */
+
 #include <iostream>
 using std::cout;
 using std::getline;
@@ -17,17 +25,22 @@ using std::isalpha;
 using std::ispunct;
 
 #include "stack.h"
+#include "tratarString.h"
 
+/** @brief Funcao principal*/
 int main (){
-	char *v = new char[0];
-	string line, palindromo, aux, letter;
+	
+	string line, palindromo, aux;
 	stringstream ss;
 	locale loc;
 
+	char *v = new char[0];
 	pilha<char> s(v, 0);
 	
 	cout << "Digite a entrada: ";
 	getline(cin, line);
+
+	line = removeAccents(line);
 	
 	for(uint i=0; i<line.length(); i++){ 
 		if(isalnum(line[i], loc)) {
@@ -40,17 +53,6 @@ int main (){
 		}	
 		else if(isspace(line[i], loc)) {
 			// faz nada
-		}
-		else{ //is accented letter
-			ss << line[i] << line[i+1];
-			ss >> letter;
-			cout << "letterB: " << letter << endl;
-			letter=removeAccents(letter);
-			cout << "letterA: " << letter << endl;
-			s.push(letter[0]);
-			aux+=letter;
-			i++;
-			letter="";
 		}
 	}
 	line = aux/*.substr(0, aux.size()/2)*/;
@@ -68,8 +70,6 @@ int main (){
 		cout << "Nao eh palindromo!"<<endl;
 	}
 
-	
-
-	//delete[] s.getVetor();
+	delete[] s.getVetor();
 	return 0;
 }
