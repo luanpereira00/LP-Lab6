@@ -115,5 +115,5 @@ public:
 	~pilha(){
 		//destrutor padrao 
 	}
-};s
+};
 #endif
