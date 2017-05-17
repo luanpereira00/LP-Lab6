@@ -3,7 +3,7 @@
  * @brief	Definicao da classe stack para representar uma pilha de dados
  * @details Os atributos de uma pilha sao o vetor e o tamanho do vetor
  * @author	Luan Pereira (luanpereira00@outlook.com)
- * @since	15/05/2019
+ * @since	15/05/2017
  * @date	15/05/2017
  */
 

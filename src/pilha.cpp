@@ -1,8 +1,8 @@
 /**
- * @file	Q1.cpp
+ * @file	pilha.cpp
  * @brief	Funcao principal
  * @author	Luan Pereira (luanpereira00@outlook.com)
- * @since	15/05/2019
+ * @since	15/05/2017
  * @date	15/05/2017
  */
 
@@ -24,7 +24,7 @@ using std::toupper;
 using std::isalpha;
 using std::ispunct;
 
-#include "stack.h"
+#include "pilha.h"
 #include "tratarString.h"
 
 /** @brief Funcao principal*/

@@ -2,13 +2,11 @@
  * @file	tratarString.cpp
  * @brief	Implementacao de funcao que remove acentos de uma string
  * @author	Luan Pereira (luanpereira00@outlook.com)
- * @since	15/05/2019
+ * @since	15/05/2017
  * @date	15/05/2017
  */
 #include <string>
 using std::string;
-
-#include "stack.h"
 
 /** 
 * @brief Funcao que remove acentos de uma string 

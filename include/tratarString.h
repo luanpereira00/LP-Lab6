@@ -2,7 +2,7 @@
  * @file	tratarString.h
  * @brief	Declaracao de funcao que remove acentos de uma string
  * @author	Luan Pereira (luanpereira00@outlook.com)
- * @since	15/05/2019
+ * @since	15/05/2017
  * @date	15/05/2017
  */
 
