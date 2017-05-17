@@ -70,6 +70,5 @@ int main (){
 		cout << "Nao eh palindromo!"<<endl;
 	}
 
-	delete[] s.getVetor();
 	return 0;
 }

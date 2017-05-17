@@ -60,8 +60,7 @@ public:
 	* @param elemento O elemento que sera adicionado
 	*/
 	void push(T elemento){
-		T *antigo;
-		if(getTam()>0) antigo = vetor;
+		T *antigo = vetor;
 		
 		T *novo = new T[getTam()+1];
 		for (int  i=0; i<getTam(); i++) novo[i]=antigo[i];
@@ -113,7 +112,8 @@ public:
 
 	/** @brief Destrutor padrado */
 	~pilha(){
-		//destrutor padrao 
+		delete[] vetor;
+		tam=0;
 	}
 };
 #endif
