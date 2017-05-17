@@ -52,6 +52,20 @@ public:
 		fim->prox=NULL;
 		fim->anter=inicio;
 	}
+	/** @brief Destrutor padrao */
+	~lista(){
+		node<T>* tmp = new node<T>;
+		node<T>* aux = inicio;
+		tmp->prox=inicio->prox;
+		while(tmp->prox->prox){
+			delete aux;
+			aux = tmp->prox;
+			tmp->prox=tmp->prox->prox;
+		}
+		delete aux;
+		delete tmp->prox;;
+		delete tmp;
+	}
 
 	/** @return Retorna a sentinela de inicio da lista ligada*/
 	node<T>* getInicio(){

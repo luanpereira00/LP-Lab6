@@ -37,7 +37,7 @@ CFLAGS=-Wall -pedantic -ansi -std=c++11 -I. -I$(INC_DIR)
 # Ao final da compilacao, remove os arquivos objeto.
 all: init pilha lista
 debug: CFLAGS += -g -O0
-debug: exec
+debug: pilha lista
 
 init:
 	@mkdir -p $(BIN_DIR)/
