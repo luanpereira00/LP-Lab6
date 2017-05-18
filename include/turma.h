@@ -3,6 +3,8 @@
 
 #include <iostream>
 using std::cout;
+using std::cin;
+using std::getline;
 using std::endl;
 
 #include "lista.h"
@@ -21,6 +23,7 @@ public:
 		tam=0;
 		media=0;
 	}
+
 	~turma(){
 		delete ll;
 		tam=0;
@@ -48,9 +51,40 @@ public:
 	}
 
 	void imprimir(){
-		cout << "--- Turma ---" << endl;
-		cout << "Quantidade de alunos: " << tam << endl<< "Media dos alunos: " << media << endl;
+		//cout << "--- Turma ---" << endl;
+		cout << "Quantidade de alunos: " << tam << endl<< "Media de notas dos alunos: " << media << endl;
 		ll->imprimir();
+	}
+
+	float calcMedia(){
+		float m=0;
+		node<aluno>* it = ll->getInicio();
+		for (int i=0; i<getTam(); i++){ 
+			m+=(it->prox->dado).getNota();
+			it = ll->buscar(it->prox->prox->dado);	
+		}
+
+		return (m/getTam());
+	}
+
+	void adicionarAluno(){
+		string n, f, nt;
+		cout << "Digite o nome do aluno: ";
+		cin.ignore();
+		getline(cin, n); 
+		cout << "Digite a quantidade de faltas do aluno " << n << ": ";
+		cin >> f;
+		cout << "Digite a nota do aluno " << n << ": ";
+		cin >> nt;
+
+		int m=(ll->getFim()->anter->dado+1);
+		aluno a(m, n, atoi(f.c_str()), atof(nt.c_str()));
+
+		ll->inserir(a);
+
+		cout << "Inserido com sucesso na lista!" << endl;
+		setTam(getTam()+1);
+		setMedia(calcMedia());
 	}
 };
 

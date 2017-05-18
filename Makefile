@@ -80,7 +80,7 @@ $(OBJ_DIR)/lista.o: $(SRC_DIR)/lista.cpp $(INC_DIR)/lista.h
 
 # Alvo (target) para a construcao do executavel
 # Define o arquivo turmas.o como dependencia
-turmas: $(OBJ_DIR)/turmas.o
+turmas: $(OBJ_DIR)/turmas.o $(OBJ_DIR)/menu.o
 	@echo "============="
 	@echo "Ligando o alvo $@"
 	@echo "============="
@@ -89,8 +89,13 @@ turmas: $(OBJ_DIR)/turmas.o
 	@echo "============="
 
 # Alvo (target) para a construcao do objeto matrizes.o
-# Define os arquivos turmas.cpp, turma.h, aluno.h e pilha.h como dependencias.
-$(OBJ_DIR)/turmas.o: $(SRC_DIR)/turmas.cpp $(INC_DIR)/turma.h $(INC_DIR)/aluno.h $(INC_DIR)/pilha.h
+# Define os arquivos turmas.cpp, menu.cpp, menu.h, turma.h, aluno.h e pilha.h como dependencias.
+$(OBJ_DIR)/turmas.o: $(SRC_DIR)/turmas.cpp $(SRC_DIR)/menu.cpp $(INC_DIR)/menu.h $(INC_DIR)/turma.h $(INC_DIR)/aluno.h $(INC_DIR)/pilha.h
+	$(CC) -c $(CFLAGS) -o $@ $<	
+
+# Alvo (target) para a construcao do objeto matrizes.o
+# Define os arquivos menu.cpp e menu.h como dependencias.
+$(OBJ_DIR)/menu.o: $(SRC_DIR)/menu.cpp $(INC_DIR)/menu.h
 	$(CC) -c $(CFLAGS) -o $@ $<				
 
 # Alvo (target) para a geração automatica de documentacao usando o Doxygen.

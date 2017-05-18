@@ -111,6 +111,16 @@ public:
         return *this;
 	}
 
+	bool operator<(const aluno a) {
+		if(matricula<a.matricula) return true;
+		else return false;
+	}
+
+	int operator+(int i) {
+		int m = matricula + i;
+        return m;
+	}
+
 };
 
 #endif
