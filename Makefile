@@ -35,9 +35,9 @@ CFLAGS=-Wall -pedantic -ansi -std=c++11 -I. -I$(INC_DIR)
 
 # Define o alvo (target) para a compilacao completa.
 # Ao final da compilacao, remove os arquivos objeto.
-all: init pilha lista
+all: init pilha lista turmas
 debug: CFLAGS += -g -O0
-debug: pilha lista
+debug: pilha lista turmas
 
 init:
 	@mkdir -p $(BIN_DIR)/
@@ -78,6 +78,20 @@ lista: $(OBJ_DIR)/lista.o
 $(OBJ_DIR)/lista.o: $(SRC_DIR)/lista.cpp $(INC_DIR)/lista.h
 	$(CC) -c $(CFLAGS) -o $@ $<	
 
+# Alvo (target) para a construcao do executavel
+# Define o arquivo turmas.o como dependencia
+turmas: $(OBJ_DIR)/turmas.o
+	@echo "============="
+	@echo "Ligando o alvo $@"
+	@echo "============="
+	$(CC) $(CFLAGS) -o $(BIN_DIR)/$@ $^
+	@echo "+++ [Executavel 'turmas' criado em $(BIN_DIR)] +++"
+	@echo "============="
+
+# Alvo (target) para a construcao do objeto matrizes.o
+# Define os arquivos turmas.cpp, turma.h, aluno.h e pilha.h como dependencias.
+$(OBJ_DIR)/turmas.o: $(SRC_DIR)/turmas.cpp $(INC_DIR)/turma.h $(INC_DIR)/aluno.h $(INC_DIR)/pilha.h
+	$(CC) -c $(CFLAGS) -o $@ $<				
 
 # Alvo (target) para a geração automatica de documentacao usando o Doxygen.
 # Sempre remove a documentacao anterior (caso exista) e gera uma nova.

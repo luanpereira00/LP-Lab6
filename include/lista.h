@@ -118,14 +118,16 @@ public:
 
 	/** @brief Imprime toda a lista ligada*/
 	void imprimir(){
-		cout << "-----------------------" << endl;
-		cout << "Lista atual: " << endl;
 		node<T>* it = inicio;
+		if(it->prox->prox){
+			cout << "-----------------------" << endl;
+			cout << "Lista: " << endl;
+		}
 		while(it->prox->prox){
 			cout << it->prox->dado << endl;
 			it=it->prox;
 		}
-		cout << "-----------------------" << endl;
+		if(it->prox->prox) cout << "-----------------------" << endl;
 	}
 
 	/** 
