@@ -93,6 +93,11 @@ public:
 		return is; 
 	}
 
+	bool operator==(const aluno a) {
+        if((nome == a.nome) and (faltas == a.faltas) and (nota == a.nota)) return true;
+        return false;
+	}
+
 	aluno& operator=(const aluno a) {
 		matricula = a.matricula;
         nome = a.nome;

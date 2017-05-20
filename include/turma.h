@@ -3,6 +3,7 @@
 
 #include <iostream>
 using std::cout;
+using std::cerr;
 using std::cin;
 using std::getline;
 using std::endl;
@@ -56,6 +57,15 @@ public:
 		ll->imprimir();
 	}
 
+	bool verifAluno(const aluno a){
+		node<aluno>* it = ll->getInicio();
+		while(it->prox->prox){ 
+			if((it->prox->dado)==a) return true;
+			it=it->prox;
+		}
+		return false;
+	}
+
 	float calcMedia(){
 		float m=0;
 		node<aluno>* it = ll->getInicio();
@@ -80,11 +90,13 @@ public:
 		int m=(ll->getFim()->anter->dado+1);
 		aluno a(m, n, atoi(f.c_str()), atof(nt.c_str()));
 
-		ll->inserir(a);
-
-		cout << "Inserido com sucesso na lista!" << endl;
-		setTam(getTam()+1);
-		setMedia(calcMedia());
+		if(!verifAluno(a)){
+			ll->inserir(a);
+			cout << "Inserido com sucesso na lista!" << endl;
+			setTam(getTam()+1);
+			setMedia(calcMedia());
+		}
+		else cerr << "Aluno ja cadastrado! Nao foi (re)inserido!" << endl;
 	}
 };
 

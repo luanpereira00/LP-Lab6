@@ -1,11 +1,17 @@
 #include <iostream>
 using std::cout;
+using std::cerr;
 using std::cin;
 using std::getline;
 using std::endl;
 
 #include <string>
 using std::string;
+using std::to_string;
+
+#include <fstream>
+using std::ifstream;
+using std::ofstream;
 
 #include <cstdlib>
 
@@ -21,13 +27,48 @@ int main (){
 	string nomeTurma, qtdAlunos, mediaAlunos;
 	int result;
 
+	//ifstream
+	for (int i=0; i<20; i++){ 
+		string opening = "./data/Turma" + to_string(i+1) + ".csv";
+
+		ifstream turma(opening);
+		if(!turma){ //teste de arquivo
+			i=20;     
+		}
+		else {
+			turmasCriadas++;
+			cout<<"... Lendo arquivo " << opening << endl;
+			turma>>qtdAlunos;
+			turma>>mediaAlunos;
+			int j=0;
+			lista<aluno>* ll = t[i].getLista();
+			while(j<atoi(qtdAlunos.c_str())){ 
+				aluno a;
+				turma>>a;
+				if(!t[i].verifAluno(a)){
+					ll->inserir(a);
+					t[i].setTam(t[i].getTam()+1);
+					t[i].setMedia(t[i].calcMedia());
+				}
+				else cerr << "Aluno ja cadastrado! Nao foi (re)inserido!" << endl;
+
+				j++;
+			}
+			turma.close();
+			cout << "Turma inserida com sucesso!" << endl;
+		}	
+	}
+	result=1;
 	while(result!=0){
 		result = menuTurmas();
 
 		switch(result){
 			case 1: 
 				cout << "\nAqui adicionam-se turmas!\n" << endl;
-				if(turmasCriadas==20) cerr << "Impossivel criar novas turmas!" << endl;
+				if(turmasCriadas==20) cerr << "Impossivel criar novas turmas! Limite de 20 turmas atingido!" << endl;
+				else if(turmasCriadas>0 && t[turmasCriadas].getTam()==0){
+					cerr << "Impossivel criar a nova turma! A turma anterior esta vazia!" << endl;
+				}
 				else{
 					//turma criada pelo construtor padrao
 					
@@ -68,6 +109,27 @@ int main (){
 				}
 				else cerr << "Nenhuma turma criada!" << endl;
 			break;
+		}
+	}
+
+	//ofstream
+	for (int i=0; i<turmasCriadas; i++){ 
+		if(t[i].getTam()>0){
+			string closing = "./data/Turma" + to_string(i+1) + ".csv";
+			cout<<"... Criando arquivo " << closing << endl;
+			ofstream turma(closing);
+
+			lista<aluno>* ll = t[i].getLista();
+			turma << t[i].getTam() << endl;
+			turma << t[i].getMedia() << endl;
+
+			node<aluno>* it = ll->getInicio();
+			
+			while(it->prox->prox){
+				turma << it->prox->dado << endl;
+				it=it->prox;
+			}
+			turma.close();
 		}
 	}
 

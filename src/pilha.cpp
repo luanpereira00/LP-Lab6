@@ -57,8 +57,10 @@ int main (){
 	}
 	line = aux/*.substr(0, aux.size()/2)*/;
 
-	for(int i=0; i<s.getTam()/*/2*/; i++){ 
-		palindromo += s.show(i);
+	palindromo="";
+	while (s.getTam()>0){ 
+		palindromo += s.top();
+		s.pop();
 	}
 	
 	if(line==palindromo){

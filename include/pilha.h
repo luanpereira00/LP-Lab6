@@ -70,14 +70,6 @@ public:
 		if(getTam()>0) delete[] antigo;
 	}
 
-	/** 
-	* @return Retorna um elemento na posicao i da pilha 
-	* @param i A posicao que sera retornada 
-	*/
-	T show(int i){
-		return vetor[getTam()-1-i];
-	}
-
 	/** @return Retorna o elemento do topo da pilha */
 	T top(){ 
 		return vetor[getTam()-1];
@@ -90,6 +82,7 @@ public:
 			T *novo = new T[getTam()-1];
 			for (int  i=0; i<getTam()-1; i++) novo[i]=antigo[i];
 			setTam(getTam()-1);
+			setVetor(novo);
 			delete[] antigo;
 		}
 	}
@@ -110,9 +103,9 @@ public:
 		//construtor padrao
 	}
 
-	/** @brief Destrutor padrado */
+	/** @brief Destrutor padrao */
 	~pilha(){
-		delete[] vetor;
+		if(getTam()>0) delete[] vetor;
 		tam=0;
 	}
 };
