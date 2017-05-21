@@ -1,3 +1,11 @@
+/**
+ * @file	turmas.cpp
+ * @brief	Funcao principal
+ * @author	Luan Pereira (luanpereira00@outlook.com)
+ * @since	15/05/2017
+ * @date	21/05/2017
+ */
+
 #include <iostream>
 using std::cout;
 using std::cerr;
@@ -19,6 +27,7 @@ using std::ofstream;
 #include "aluno.h"
 #include "menu.h"
 
+/** @brief Funcao principal*/
 int main (){
 	turma *t;
 	t = new turma[20];
@@ -66,7 +75,7 @@ int main (){
 			case 1: 
 				cout << "\nAqui adicionam-se turmas!\n" << endl;
 				if(turmasCriadas==20) cerr << "Impossivel criar novas turmas! Limite de 20 turmas atingido!" << endl;
-				else if(turmasCriadas>0 && t[turmasCriadas].getTam()==0){
+				else if(turmasCriadas>0 && t[turmasCriadas-1].getTam()==0){
 					cerr << "Impossivel criar a nova turma! A turma anterior esta vazia!" << endl;
 				}
 				else{

@@ -35,8 +35,8 @@ struct node{
 template <typename T>
 class lista{
 private:
-	node<T>* inicio;
-	node<T>* fim;
+	node<T>* inicio; /**< Sentinela de inicio da lista*/
+	node<T>* fim; /**< Sentinela de fim da lista*/
 
 public:
 	/** @brief Construtor padrao */

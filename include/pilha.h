@@ -23,8 +23,8 @@ template <typename T>
  */
 class pilha{
 private:
-	T *vetor;
-	int tam;
+	T *vetor; /**< O vetor que contem a pilha*/
+	int tam; /**< O tamanho da pilha*/
 
 public:
 
